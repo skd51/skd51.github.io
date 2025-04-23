@@ -1,0 +1,213 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Hadinote</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      background: #f6f8fa;
+      color: #24292f;
+      margin: 0;
+    }
+    header {
+      background: #24292f;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+    select {
+      width: 100%;
+      padding: 1rem;
+      font-size: 1rem;
+      border: none;
+      background: #0366d6;
+      color: white;
+      font-weight: bold;
+    }
+    section {
+      display: none;
+      padding: 2rem;
+    }
+    section.active {
+      display: block;
+    }
+    h2 {
+      border-bottom: 1px solid #e1e4e8;
+      padding-bottom: 0.3rem;
+    }
+    .input-row {
+      margin-bottom: 1rem;
+    }
+    input[type="text"], input[type="number"] {
+      width: 100%;
+      padding: 0.5rem;
+      margin-top: 0.3rem;
+      border: 1px solid #d1d5da;
+      border-radius: 4px;
+    }
+    button {
+      background-color: #28a745;
+      color: white;
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    li {
+      margin-bottom: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Hadinote</h1>
+</header>
+
+<select onchange="showSection(this.value)">
+  <option value="accueil">Accueil</option>
+  <option value="objectifs">Objectifs</option>
+  <option value="finances">Finances</option>
+  <option value="revenus">Revenus</option>
+  <option value="courses">Courses</option>
+  <option value="poids">Prise de poids</option>
+  <option value="animaux">Animaux</option>
+  <option value="taches">Tâches</option>
+  <option value="calendrier">Calendrier</option>
+</select>
+
+<section id="accueil" class="active">
+  <h2>Bienvenue sur Hadinote</h2>
+  <p>Votre assistant personnel complet pour la gestion du quotidien.</p>
+</section>
+
+<section id="objectifs">
+  <h2>Objectifs</h2>
+  <div class="input-row">
+    <input type="text" id="nouvelObjectif" placeholder="Nouvel objectif">
+    <button onclick="ajouterObjectif()">Ajouter</button>
+  </div>
+  <ul id="listeObjectifs"></ul>
+</section>
+
+<section id="finances">
+  <h2>Finances</h2>
+  <div class="input-row">
+    <input type="text" id="depenseNom" placeholder="Nom de la dépense">
+    <input type="number" id="depenseMontant" placeholder="Montant (€)">
+    <button onclick="ajouterDepense()">Ajouter dépense</button>
+  </div>
+  <ul id="listeDepenses"></ul>
+  <p><strong>Total :</strong> <span id="totalDepenses">0</span> €</p>
+</section>
+
+<section id="revenus">
+  <h2>Revenus</h2>
+  <div class="input-row">
+    <input type="number" id="revenu" placeholder="Montant (€)">
+    <button onclick="ajouterRevenu()">Ajouter revenu</button>
+  </div>
+  <ul id="listeRevenus"></ul>
+  <p><strong>Total :</strong> <span id="totalRevenus">0</span> €</p>
+</section>
+
+<section id="courses">
+  <h2>Liste de Courses</h2>
+  <div class="input-row">
+    <input type="text" id="course" placeholder="Ajouter un produit">
+    <button onclick="ajouterCourse()">Ajouter</button>
+  </div>
+  <ul id="listeCourses"></ul>
+</section>
+
+<section id="poids">
+  <h2>Repas pour prise de poids</h2>
+  <ul>
+    <li>Pâtes au thon et huile d’olive</li>
+    <li>Omelette fromage + avocat</li>
+    <li>Riz + lentilles + œufs</li>
+  </ul>
+</section>
+
+<section id="animaux">
+  <h2>Soins pour Hadès</h2>
+  <p>Brossage conseillé tous les 3 jours. Utiliser un shampooing doux pour poils longs.</p>
+  <p>Alimentation : éviter le chocolat, les raisins. Favoriser poulet, carottes, riz.</p>
+</section>
+
+<section id="taches">
+  <h2>Tâches ménagères</h2>
+  <ul>
+    <li><input type="checkbox"> Aérer la maison</li>
+    <li><input type="checkbox"> Passer l’aspirateur</li>
+    <li><input type="checkbox"> Ranger 10 minutes</li>
+  </ul>
+</section>
+
+<section id="calendrier">
+  <h2>Calendrier 4x8</h2>
+  <p>À venir : interface dynamique pour horaires de travail.</p>
+</section>
+
+<script>
+function showSection(id) {
+  document.querySelectorAll("section").forEach(sec => sec.classList.remove("active"));
+  document.getElementById(id).classList.add("active");
+}
+
+function ajouterObjectif() {
+  const txt = document.getElementById("nouvelObjectif").value;
+  if (txt) {
+    const li = document.createElement("li");
+    li.innerHTML = '<input type="checkbox"> ' + txt;
+    document.getElementById("listeObjectifs").appendChild(li);
+    document.getElementById("nouvelObjectif").value = "";
+  }
+}
+
+function ajouterDepense() {
+  const nom = document.getElementById("depenseNom").value;
+  const montant = parseFloat(document.getElementById("depenseMontant").value);
+  if (nom && !isNaN(montant)) {
+    const li = document.createElement("li");
+    li.textContent = `${nom} - ${montant} €`;
+    document.getElementById("listeDepenses").appendChild(li);
+    const total = document.getElementById("totalDepenses");
+    total.textContent = (parseFloat(total.textContent) + montant).toFixed(2);
+    document.getElementById("depenseNom").value = "";
+    document.getElementById("depenseMontant").value = "";
+  }
+}
+
+function ajouterRevenu() {
+  const montant = parseFloat(document.getElementById("revenu").value);
+  if (!isNaN(montant)) {
+    const li = document.createElement("li");
+    li.textContent = `${montant} €`;
+    document.getElementById("listeRevenus").appendChild(li);
+    const total = document.getElementById("totalRevenus");
+    total.textContent = (parseFloat(total.textContent) + montant).toFixed(2);
+    document.getElementById("revenu").value = "";
+  }
+}
+
+function ajouterCourse() {
+  const txt = document.getElementById("course").value;
+  if (txt) {
+    const li = document.createElement("li");
+    li.innerHTML = '<input type="checkbox"> ' + txt;
+    document.getElementById("listeCourses").appendChild(li);
+    document.getElementById("course").value = "";
+  }
+}
+</script>
+
+</body>
+</html>
