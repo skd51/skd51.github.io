@@ -1,0 +1,226 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Hadinote</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body { font-family: system-ui, sans-serif; margin: 0; padding: 1rem; background: #f6f8fa; }
+    h1 { text-align: center; }
+    .hidden { display: none; }
+    .section { background: white; padding: 1rem; border-radius: 10px; margin: 1rem auto; max-width: 800px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
+    ul { list-style: none; padding-left: 0; }
+    li { margin-bottom: 0.5rem; }
+    label { display: block; margin: 0.4rem 0; }
+    button { padding: 8px 16px; background: #e74c3c; color: white; border: none; border-radius: 5px; cursor: pointer; }
+    select { margin-bottom: 1rem; padding: 6px; font-size: 1rem; }
+    input[type="number"], input[type="text"] { padding: 4px; }
+  </style>
+</head>
+<body>
+
+<h1>Hadinote</h1>
+<select onchange="showSection(this.value)">
+  <option value="accueil">Accueil</option>
+  <option value="courses">Liste de Courses</option>
+  <option value="taches">Tâches Ménagères</option>
+<option value="calendrier">Calendrier 4x8</option>
+</select>
+
+<section id="accueil" class="section">
+  <h2>Bienvenue sur Hadinote</h2>
+  <p>Votre assistant personnel pour organiser votre quotidien, suivre vos tâches, vos finances, et vos routines.</p>
+</section>
+
+<section id="courses" class="section hidden">
+  <h2>Liste de Courses Complète</h2>
+  <ul>
+    <li><input type="checkbox"> Lait - 6 x 1L <input type="number" placeholder="Prix €"></li>
+    <li><input type="checkbox"> Œufs - 2 x 12 <input type="number" placeholder="Prix €"></li>
+    <li><input type="checkbox"> Pâtes - 2 x 500g <input type="number" placeholder="Prix €"></li>
+  </ul>
+  <button onclick="resetCourses()">Réinitialiser la liste</button>
+</section>
+
+<section id="calendrier" class="section hidden">
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Calendrier 4x8 - Hadinote</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body { font-family: Arial, sans-serif; background: #f0f0f0; text-align: center; padding: 1rem; }
+    select, input { padding: 0.5rem; margin: 0.5rem; font-size: 1rem; }
+    table { width: 100%; max-width: 800px; margin: 1rem auto; border-collapse: collapse; background: white; }
+    th, td { border: 1px solid #ccc; padding: 10px; }
+    th { background: #c0392b; color: white; }
+    .tag { font-weight: bold; }
+  </style>
+</head>
+<body>
+
+<h1>Calendrier 4x8 - Hadinote</h1>
+
+<div>
+  <label>Mois :</label>
+  <select id="month">
+    <option value="0">Janvier</option>
+    <option value="1">Février</option>
+    <option value="2">Mars</option>
+    <option value="3">Avril</option>
+    <option value="4" selected>Mai</option>
+    <option value="5">Juin</option>
+    <option value="6">Juillet</option>
+    <option value="7">Août</option>
+    <option value="8">Septembre</option>
+    <option value="9">Octobre</option>
+    <option value="10">Novembre</option>
+    <option value="11">Décembre</option>
+  </select>
+
+  <label>Année :</label>
+  <select id="year">
+    <option>2023</option>
+    <option selected>2024</option>
+    <option>2025</option>
+    <option>2026</option>
+    <option>2027</option>
+    <option>2028</option>
+  </select>
+</div>
+
+<div>
+  <label for="cycle">Cycle de travail :</label>
+  <select id="cycle" onchange="applyCycle()">
+    <option value="4x8">4x8</option>
+    <option value="2x8">2x8</option>
+    <option value="nuit">Nuit</option>
+    <option value="custom">Personnalisé</option>
+  </select>
+</div>
+
+<div id="custom-input" style="display:none;">
+  <label for="custom-sequence">Séquence personnalisée (ex: M,A,R,R,N):</label>
+  <input type="text" id="custom-sequence" placeholder="M,A,R,N" oninput="applyCycle()">
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>Lun</th><th>Mar</th><th>Mer</th><th>Jeu</th><th>Ven</th><th>Sam</th><th>Dim</th>
+    </tr>
+  </thead>
+  <tbody id="calendar-body"></tbody>
+</table>
+
+<script>
+  const cycleTypes = {
+    "4x8": ["M", "M", "M", "M", "R", "R", "A", "A", "A", "A", "R", "R", "N", "N", "N", "N", "R", "R"],
+    "2x8": ["M", "M", "R", "A", "A", "R"],
+    "nuit": ["N", "N", "N", "N", "R", "R"]
+  };
+
+  function applyCycle() {
+    const month = parseInt(document.getElementById("month").value);
+    const year = parseInt(document.getElementById("year").value);
+    const cycle = document.getElementById("cycle").value;
+    const customBox = document.getElementById("custom-input");
+    const calendar = document.getElementById("calendar-body");
+    calendar.innerHTML = "";
+
+    if (cycle === "custom") {
+      customBox.style.display = "block";
+    } else {
+      customBox.style.display = "none";
+    }
+
+    let tags = [];
+    if (cycle === "custom") {
+      const input = document.getElementById("custom-sequence").value.trim();
+      tags = input ? input.split(",") : [];
+    } else {
+      tags = cycleTypes[cycle];
+    }
+
+    const firstDay = new Date(year, month, 1).getDay();
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+    const adjustedFirstDay = firstDay === 0 ? 7 : firstDay;
+    let date = 1;
+    let tagIndex = 0;
+
+    for (let i = 0; i < 6; i++) {
+      const row = document.createElement("tr");
+      for (let j = 1; j <= 7; j++) {
+        const cell = document.createElement("td");
+        if (i === 0 && j < adjustedFirstDay || date > daysInMonth) {
+          cell.innerHTML = "";
+        } else {
+          const tag = tags.length ? tags[tagIndex % tags.length] : "-";
+          cell.innerHTML = date + "<br><span class='tag'>" + tag + "</span>";
+          date++;
+          tagIndex++;
+        }
+        row.appendChild(cell);
+      }
+      calendar.appendChild(row);
+    }
+  }
+
+  document.getElementById("month").addEventListener("change", applyCycle);
+  document.getElementById("year").addEventListener("change", applyCycle);
+  applyCycle();
+</script>
+
+</body>
+</html>
+
+</section>
+
+<section id="taches" class="section hidden">
+  <h2>Tâches Ménagères Hebdomadaires</h2>
+  <div id="tasks-container">
+    <!-- Contenu par jour injecté ici -->
+  </div>
+  <button onclick="resetTasks()">Réinitialiser la semaine</button>
+</section>
+
+<script>
+function showSection(id) {
+  document.querySelectorAll("section").forEach(section => section.classList.add("hidden"));
+  document.getElementById(id).classList.remove("hidden");
+}
+
+function resetCourses() {
+  document.querySelectorAll('#courses input[type="checkbox"]').forEach(c => c.checked = false);
+  document.querySelectorAll('#courses input[type="number"]').forEach(c => c.value = "");
+}
+
+function resetTasks() {
+  document.querySelectorAll('#taches input[type="checkbox"]').forEach(c => c.checked = false);
+}
+
+const tasks = {
+  "Lundi": ["Aérer toutes les pièces", "Ranger les pièces communes", "Lancer une lessive", "Nettoyer les éviers et lavabos", "Faire la vaisselle", "Nettoyer la gamelle d’eau", "Passer la serpillière", "Brosser Hadès si besoin"],
+  "Mardi": ["Aspirer salon, chambre, tapis", "Nettoyer table, plan de travail, poignées", "Arrosage des plantes", "Nettoyer la litière de Minette", "Nettoyer la gamelle d’eau", "Brosser Hadès si besoin"],
+  "Mercredi": ["Nettoyage cuisine (plaques, micro-ondes)", "Sortir les poubelles", "Poussière dans les meubles", "Faire la vaisselle", "Nettoyer la gamelle d’eau", "Balayer les entrées", "Brosser Hadès"],
+  "Jeudi": ["Salle de bain : douche, lavabo, miroir", "Changer serviettes et tapis de bain", "Aspirer sous les meubles", "Vérifier eau/croquettes Hadès et Minette", "Passer la serpillière", "Nettoyer la gamelle d’eau"],
+  "Vendredi": ["Laver les sols (cuisine, salle de bain, WC)", "Nettoyer les vitres", "Lessive des draps", "Nettoyer les gamelles (eau + croquettes)", "Brosser Hadès si besoin", "Faire la vaisselle"],
+  "Samedi": ["Tri / rangement personnel", "Entretien frigo", "Repassage si besoin", "Préparer la liste de courses", "Nettoyer traces de pattes ou poils", "Passer la serpillière", "Nettoyer la gamelle d’eau"],
+  "Dimanche": ["Nettoyage express WC + évier", "Planifier la semaine suivante", "Promenade Hadès", "Soins Hadès (yeux/oreilles/pattes)", "Brosser Hadès si besoin", "Nettoyer la gamelle d’eau", "Faire la vaisselle"]
+};
+
+window.onload = () => {
+  const container = document.getElementById("tasks-container");
+  for (const [day, list] of Object.entries(tasks)) {
+    const div = document.createElement("div");
+    div.innerHTML = `<h3>${day}</h3>` + list.map(task => `<label><input type="checkbox"> ${task}</label>`).join("");
+    container.appendChild(div);
+  }
+};
+</script>
+
+</body>
+</html>
