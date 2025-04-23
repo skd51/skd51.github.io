@@ -4,29 +4,179 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bienvenue</title>
+    <title>Tableau de bord</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            color: #333;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
             margin: 0;
+            background-color: #f4f4f4;
         }
-        h1 {
-            color: #3366cc;
+        header {
+            background-color: #d32f2f;
+            color: white;
+            padding: 1rem;
+            text-align: center;
         }
-        p {
-            font-size: 1.2em;
+        nav {
+            display: flex;
+            background-color: #1976d2;
+        }
+        nav button {
+            flex: 1;
+            padding: 1rem;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+        nav button.active {
+            background-color: #1565c0;
+        }
+        section {
+            display: none;
+            padding: 1rem;
+        }
+        section.active {
+            display: block;
+        }
+        .input-group {
+            margin: 1rem 0;
+        }
+        input, button, select {
+            padding: 0.5rem;
+            font-size: 1rem;
+            margin-top: 0.5rem;
+            width: 100%;
+        }
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        li {
+            background-color: white;
+            margin-bottom: 0.5rem;
+            padding: 0.5rem;
+            border-radius: 5px;
         }
     </style>
 </head>
 <body>
-    <h1>Bienvenue sur mon site !</h1>
-    <p>Ce site est en cours de construction.</p>
+
+<header>
+    <h1>Mon Tableau de Bord</h1>
+</header>
+
+<nav>
+    <button onclick="showSection('accueil')" class="active">Accueil</button>
+    <button onclick="showSection('objectifs')">Objectifs</button>
+    <button onclick="showSection('finances')">Finances</button>
+    <button onclick="showSection('animaux')">Animaux</button>
+</nav>
+
+<section id="accueil" class="active">
+    <h2>Bienvenue</h2>
+    <p>Ceci est votre tableau de bord personnel.</p>
+</section>
+
+<section id="objectifs">
+    <h2>Objectifs personnels</h2>
+    <div class="input-group">
+        <input type="text" id="objectifInput" placeholder="Ajouter un objectif">
+        <button onclick="addObjectif()">Ajouter</button>
+    </div>
+    <ul id="objectifsList"></ul>
+</section>
+
+<section id="finances">
+    <h2>Suivi des finances</h2>
+    <div class="input-group">
+        <input type="text" id="depenseLabel" placeholder="Libellé">
+        <input type="number" id="depenseMontant" placeholder="Montant">
+        <button onclick="addDepense()">Ajouter</button>
+    </div>
+    <ul id="financesList"></ul>
+</section>
+
+<section id="animaux">
+    <h2>Suivi des animaux</h2>
+    <div class="input-group">
+        <select id="animalNom">
+            <option value="Hadès">Hadès</option>
+            <option value="Minette">Minette</option>
+        </select>
+        <input type="text" id="animalNote" placeholder="Note ou activité">
+        <button onclick="addAnimalNote()">Ajouter</button>
+    </div>
+    <ul id="animauxList"></ul>
+</section>
+
+<script>
+function showSection(id) {
+    document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    event.target.classList.add('active');
+}
+
+function addObjectif() {
+    const input = document.getElementById('objectifInput');
+    const ul = document.getElementById('objectifsList');
+    if (input.value.trim()) {
+        const li = document.createElement('li');
+        li.textContent = input.value;
+        ul.appendChild(li);
+        saveList('objectifsList', ul);
+        input.value = '';
+    }
+}
+
+function addDepense() {
+    const label = document.getElementById('depenseLabel').value.trim();
+    const montant = parseFloat(document.getElementById('depenseMontant').value);
+    const ul = document.getElementById('financesList');
+    if (label && !isNaN(montant)) {
+        const li = document.createElement('li');
+        li.textContent = `${label} : ${montant.toFixed(2)}€`;
+        ul.appendChild(li);
+        saveList('financesList', ul);
+        document.getElementById('depenseLabel').value = '';
+        document.getElementById('depenseMontant').value = '';
+    }
+}
+
+function addAnimalNote() {
+    const animal = document.getElementById('animalNom').value;
+    const note = document.getElementById('animalNote').value.trim();
+    const ul = document.getElementById('animauxList');
+    if (note) {
+        const li = document.createElement('li');
+        li.textContent = `${animal} : ${note}`;
+        ul.appendChild(li);
+        saveList('animauxList', ul);
+        document.getElementById('animalNote').value = '';
+    }
+}
+
+function saveList(id, ul) {
+    const items = Array.from(ul.children).map(li => li.textContent);
+    localStorage.setItem(id, JSON.stringify(items));
+}
+
+function loadLists() {
+    ['objectifsList', 'financesList', 'animauxList'].forEach(id => {
+        const items = JSON.parse(localStorage.getItem(id)) || [];
+        const ul = document.getElementById(id);
+        items.forEach(text => {
+            const li = document.createElement('li');
+            li.textContent = text;
+            ul.appendChild(li);
+        });
+    });
+}
+
+loadLists();
+</script>
+
 </body>
 </html>
