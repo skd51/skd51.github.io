@@ -1,0 +1,55 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Hadinote</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; background: #f5f5f5; }
+    header { background: #d32f2f; color: white; padding: 1rem; text-align: center; }
+    select#menuSelect {
+      width: 100%; padding: 1rem; font-size: 1rem; border: none;
+      background: #1976d2; color: white;
+    }
+    section { display: none; padding: 1rem; }
+    section.active { display: block; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Hadinote</h1>
+</header>
+
+<select id="menuSelect" onchange="showSection(this.value)">
+  <option value="accueil">Accueil</option>
+  <option value="objectifs">Objectifs</option>
+  <option value="finances">Finances</option>
+  <option value="revenus">Revenus</option>
+  <option value="courses">Courses</option>
+  <option value="poids">Prise de poids</option>
+  <option value="animaux">Animaux</option>
+  <option value="taches">Tâches</option>
+  <option value="calendrier">Calendrier</option>
+</select>
+
+<section id="accueil" class="active"><h2>Bienvenue dans Hadinote</h2><p>Votre assistant de vie complet.</p></section>
+<section id="objectifs"><h2>Objectifs</h2><p>Gestion des objectifs personnels.</p></section>
+<section id="finances"><h2>Finances</h2><p>Dépenses fixes et variables, totaux automatiques.</p></section>
+<section id="revenus"><h2>Revenus</h2><p>Revenus mensuels avec totaux cumulés.</p></section>
+<section id="courses"><h2>Courses</h2><p>Liste de courses intelligente avec recettes associées.</p></section>
+<section id="poids"><h2>Prise de poids</h2><p>Repas riches et équilibrés pour reprendre du poids.</p></section>
+<section id="animaux"><h2>Animaux</h2><p>Soins, alimentation et calendrier de brossage.</p></section>
+<section id="taches"><h2>Tâches</h2><p>Checklist journalière et hebdomadaire.</p></section>
+<section id="calendrier"><h2>Calendrier</h2><p>Suivi des horaires de travail en 4x8.</p></section>
+
+<script>
+function showSection(id) {
+  document.querySelectorAll("section").forEach(s => s.classList.remove("active"));
+  document.getElementById(id).classList.add("active");
+}
+</script>
+
+</body>
+</html>
