@@ -1,0 +1,71 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accueil - Hadinote</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #d32f2f;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        nav {
+            background-color: #444;
+            display: flex;
+            justify-content: center;
+        }
+        nav select {
+            margin: 10px;
+            padding: 10px;
+            font-size: 16px;
+        }
+        main {
+            padding: 40px 20px;
+            text-align: center;
+        }
+        .description {
+            font-size: 18px;
+            color: #333;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    
+    <header>
+        <img src="logo.png" alt="Logo Hadinote" style="height:60px; vertical-align: middle; margin-right: 10px;">
+        Hadinote
+    </header>
+    
+    <nav>
+        <select onchange="navigate(this)">
+            <option value="/" selected>Accueil</option>
+            <option value="courses.html">Liste de Courses</option>
+            <option value="taches.html">Tâches Ménagères</option>
+            <option value="calendrier.html">Calendrier</option>
+        </select>
+    </nav>
+    <main>
+        <h1>Bienvenue sur Hadinote</h1>
+        <p class="description">Votre assistant de vie minimaliste et organisé.</p>
+    </main>
+
+    <script>
+        function navigate(select) {
+            const file = select.value;
+            window.location.href = file;
+        }
+    </script>
+</body>
+</html>
