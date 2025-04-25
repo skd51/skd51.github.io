@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Tâches Ménagères - Hadinote</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: #121212;
+      color: #f0f0f0;
+    }
+    header {
+      background-color: #1e1e1e;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-bottom: 2px solid #333;
+    }
+    header img {
+      height: 80px;
+      margin-right: 15px;
+    }
+    header h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin: 0;
+    }
+    nav {
+      background-color: #2a2a2a;
+      padding: 1rem;
+      text-align: center;
+    }
+    nav select {
+      font-size: 1rem;
+      padding: 0.6rem;
+      background-color: #f0f0f0;
+      color: #f0f0f0;
+      border: none;
+      border-radius: 4px;
+    }
+    main {
+      padding: 2rem;
+      text-align: center;
+    }
+  
+#falling-flowers {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+}
+.petal {
+  position: absolute;
+  width: 25px;
+  opacity: 0.5;
+  animation-name: fall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+@keyframes fall {
+  0% { transform: translateY(-100px) rotate(0deg); }
+  100% { transform: translateY(100vh) rotate(360deg); }
+}
+</style>
+</head>
+<body><div id="falling-flowers"><img class="petal" src="cherry_blossom.png" style="left: 0%; animation-delay: 0s; animation-duration: 8s;"/><img class="petal" src="cherry_blossom.png" style="left: 6%; animation-delay: 1s; animation-duration: 9s;"/><img class="petal" src="cherry_blossom.png" style="left: 12%; animation-delay: 2s; animation-duration: 10s;"/><img class="petal" src="cherry_blossom.png" style="left: 18%; animation-delay: 3s; animation-duration: 11s;"/><img class="petal" src="cherry_blossom.png" style="left: 24%; animation-delay: 4s; animation-duration: 12s;"/><img class="petal" src="cherry_blossom.png" style="left: 30%; animation-delay: 0s; animation-duration: 8s;"/><img class="petal" src="cherry_blossom.png" style="left: 36%; animation-delay: 1s; animation-duration: 9s;"/><img class="petal" src="cherry_blossom.png" style="left: 42%; animation-delay: 2s; animation-duration: 10s;"/><img class="petal" src="cherry_blossom.png" style="left: 48%; animation-delay: 3s; animation-duration: 11s;"/><img class="petal" src="cherry_blossom.png" style="left: 54%; animation-delay: 4s; animation-duration: 12s;"/><img class="petal" src="cherry_blossom.png" style="left: 60%; animation-delay: 0s; animation-duration: 8s;"/><img class="petal" src="cherry_blossom.png" style="left: 66%; animation-delay: 1s; animation-duration: 9s;"/><img class="petal" src="cherry_blossom.png" style="left: 72%; animation-delay: 2s; animation-duration: 10s;"/><img class="petal" src="cherry_blossom.png" style="left: 78%; animation-delay: 3s; animation-duration: 11s;"/><img class="petal" src="cherry_blossom.png" style="left: 84%; animation-delay: 4s; animation-duration: 12s;"/><img class="petal" src="cherry_blossom.png" style="left: 74%; animation-delay: 9.42s; animation-duration: 12.95s;"/><img class="petal" src="cherry_blossom.png" style="left: 64%; animation-delay: 3.75s; animation-duration: 9.1s;"/><img class="petal" src="cherry_blossom.png" style="left: 44%; animation-delay: 9.02s; animation-duration: 11.52s;"/><img class="petal" src="cherry_blossom.png" style="left: 87%; animation-delay: 6.08s; animation-duration: 12.76s;"/><img class="petal" src="cherry_blossom.png" style="left: 12%; animation-delay: 8.17s; animation-duration: 8.34s;"/><img class="petal" src="cherry_blossom.png" style="left: 16%; animation-delay: 6.32s; animation-duration: 14.01s;"/><img class="petal" src="cherry_blossom.png" style="left: 66%; animation-delay: 4.57s; animation-duration: 12.41s;"/><img class="petal" src="cherry_blossom.png" style="left: 17%; animation-delay: 5.42s; animation-duration: 11.05s;"/><img class="petal" src="cherry_blossom.png" style="left: 14%; animation-delay: 4.51s; animation-duration: 9.49s;"/><img class="petal" src="cherry_blossom.png" style="left: 5%; animation-delay: 3.18s; animation-duration: 10.49s;"/><img class="petal" src="cherry_blossom.png" style="left: 18%; animation-delay: 8.42s; animation-duration: 13.93s;"/><img class="petal" src="cherry_blossom.png" style="left: 1%; animation-delay: 0.71s; animation-duration: 14.2s;"/><img class="petal" src="cherry_blossom.png" style="left: 3%; animation-delay: 8.26s; animation-duration: 14.69s;"/><img class="petal" src="cherry_blossom.png" style="left: 58%; animation-delay: 9.12s; animation-duration: 8.16s;"/><img class="petal" src="cherry_blossom.png" style="left: 14%; animation-delay: 8.04s; animation-duration: 11.52s;"/><img class="petal" src="cherry_blossom.png" style="left: 21%; animation-delay: 9.51s; animation-duration: 14.96s;"/><img class="petal" src="cherry_blossom.png" style="left: 73%; animation-delay: 6.95s; animation-duration: 8.36s;"/><img class="petal" src="cherry_blossom.png" style="left: 36%; animation-delay: 6.13s; animation-duration: 13.33s;"/><img class="petal" src="cherry_blossom.png" style="left: 38%; animation-delay: 1.1s; animation-duration: 14.24s;"/><img class="petal" src="cherry_blossom.png" style="left: 51%; animation-delay: 7.26s; animation-duration: 11.91s;"/><img class="petal" src="cherry_blossom.png" style="left: 87%; animation-delay: 0.13s; animation-duration: 11.28s;"/><img class="petal" src="cherry_blossom.png" style="left: 5%; animation-delay: 4.85s; animation-duration: 12.07s;"/><img class="petal" src="cherry_blossom.png" style="left: 14%; animation-delay: 4.86s; animation-duration: 12.44s;"/><img class="petal" src="cherry_blossom.png" style="left: 62%; animation-delay: 7.81s; animation-duration: 14.31s;"/><img class="petal" src="cherry_blossom.png" style="left: 52%; animation-delay: 8.28s; animation-duration: 13.34s;"/></div>
+<header style="background-color: #1e1e1e; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #444;">
+<div style="display: flex; align-items: center;">
+<img alt="Logo Hadinote" src="logo.png" style="height: 50px; margin-right: 1rem;"/>
+<h1 style="margin: 0; font-size: 2rem; color: #ffffff;">Hadinote</h1>
+</div>
+</header>
+<nav style="background-color: #2a2a2a; padding: 1rem; text-align: center;">
+
+<select onchange="location = this.value;">
+    <option selected disabled>Navigation</option>
+    <option value="index.html">Accueil</option>
+    <option value="courses.html">Liste de Courses</option>
+    <option value="taches.html">Tâches Ménagères</option>
+    <option value="calendrier.html">Calendrier</option>
+    <option value="revenus.html">Revenus Mensuels</option>
+    <option value="menu.html">Repas / Prise de poids</option>
+    <option value="imc.html">Suivi IMC</option>
+    <option value="animaux.html">Animaux</option>
+    <option value="parametres.html">Paramètres</option>
+    <option value="objectifs.html">Objectif Personnel</option>
+</select>
+
+</nav>
+<main>
+<!DOCTYPE html>
+
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Tâches Ménagères - Hadinote</title>
+<style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #121212; color: #f0f0f0;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #d32f2f;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+    }
+    nav {
+      background-color: #444;
+      text-align: center;
+      padding: 10px;
+    }
+    nav select {
+      font-size: 16px;
+      padding: 10px;
+    }
+    h1 {
+      text-align: center;
+      color: #c0392b;
+      margin-top: 20px;
+    }
+    .day {
+      background-color: #1e1e1e; color: #f0f0f0;
+      border-radius: 10px;
+      padding: 1rem;
+      margin: 1.5rem auto;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      max-width: 800px;
+    }
+    h2 {
+      margin-top: 0;
+      color: #f0f0f0;
+    }
+    label {
+      display: block;
+      margin: 0.4rem 0;
+    }
+    button {
+      display: block;
+      margin: 2rem auto;
+      padding: 0.75rem 1.5rem;
+      background-color: #e74c3c;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+  </style>
+</head>
+<body>
+<h1 style="text-align: center; font-family: 'Poppins', sans-serif; color: #e0e0e0; font-size: 2.2rem; margin-top: 2rem;">Tâches Ménagères Hebdomadaires</h1>
+<div class="day"><h2 style="color: #f0f0f0;">Lundi</h2>
+<label><input type="checkbox"/> Aérer toutes les pièces</label>
+<label><input type="checkbox"/> Ranger les pièces communes</label>
+<label><input type="checkbox"/> Lancer une lessive</label>
+<label><input type="checkbox"/> Nettoyer les éviers et lavabos</label>
+<label><input type="checkbox"/> Faire la vaisselle</label>
+<label><input type="checkbox"/> Nettoyer la gamelle d’eau</label>
+<label><input type="checkbox"/> Passer la serpillière</label>
+<label><input type="checkbox"/> Brosser Hadès si besoin</label>
+</div>
+<div class="day"><h2 style="color: #f0f0f0;">Mardi</h2>
+<label><input type="checkbox"/> Aspirer salon, chambre, tapis</label>
+<label><input type="checkbox"/> Nettoyer table, plan de travail, poignées</label>
+<label><input type="checkbox"/> Arrosage des plantes</label>
+<label><input type="checkbox"/> Nettoyer la litière de Minette</label>
+<label><input type="checkbox"/> Nettoyer la gamelle d’eau</label>
+<label><input type="checkbox"/> Brosser Hadès si besoin</label>
+</div>
+<div class="day"><h2 style="color: #f0f0f0;">Mercredi</h2>
+<label><input type="checkbox"/> Nettoyage cuisine (plaques, micro-ondes)</label>
+<label><input type="checkbox"/> Sortir les poubelles</label>
+<label><input type="checkbox"/> Poussière dans les meubles</label>
+<label><input type="checkbox"/> Faire la vaisselle</label>
+<label><input type="checkbox"/> Nettoyer la gamelle d’eau</label>
+<label><input type="checkbox"/> Balayer les entrées</label>
+<label><input type="checkbox"/> Brosser Hadès</label>
+</div>
+<div class="day"><h2 style="color: #f0f0f0;">Jeudi</h2>
+<label><input type="checkbox"/> Salle de bain : douche, lavabo, miroir</label>
+<label><input type="checkbox"/> Changer serviettes et tapis de bain</label>
+<label><input type="checkbox"/> Aspirer sous les meubles</label>
+<label><input type="checkbox"/> Vérifier eau/croquettes Hadès et Minette</label>
+<label><input type="checkbox"/> Passer la serpillière</label>
+<label><input type="checkbox"/> Nettoyer la gamelle d’eau</label>
+</div>
+<div class="day"><h2 style="color: #f0f0f0;">Vendredi</h2>
+<label><input type="checkbox"/> Laver les sols (cuisine, salle de bain, WC)</label>
+<label><input type="checkbox"/> Nettoyer les vitres</label>
+<label><input type="checkbox"/> Lessive des draps</label>
+<label><input type="checkbox"/> Nettoyer les gamelles (eau + croquettes)</label>
+<label><input type="checkbox"/> Brosser Hadès si besoin</label>
+<label><input type="checkbox"/> Faire la vaisselle</label>
+</div>
+<div class="day"><h2 style="color: #f0f0f0;">Samedi</h2>
+<label><input type="checkbox"/> Tri / rangement personnel</label>
+<label><input type="checkbox"/> Entretien frigo</label>
+<label><input type="checkbox"/> Repassage si besoin</label>
+<label><input type="checkbox"/> Préparer la liste de courses</label>
+<label><input type="checkbox"/> Nettoyer traces de pattes ou poils</label>
+<label><input type="checkbox"/> Passer la serpillière</label>
+<label><input type="checkbox"/> Nettoyer la gamelle d’eau</label>
+</div>
+<div class="day"><h2 style="color: #f0f0f0;">Dimanche</h2>
+<label><input type="checkbox"/> Nettoyage express WC + évier</label>
+<label><input type="checkbox"/> Planifier la semaine suivante</label>
+<label><input type="checkbox"/> Promenade Hadès</label>
+<label><input type="checkbox"/> Soins Hadès (yeux/oreilles/pattes)</label>
+<label><input type="checkbox"/> Brosser Hadès si besoin</label>
+<label><input type="checkbox"/> Nettoyer la gamelle d’eau</label>
+<label><input type="checkbox"/> Faire la vaisselle</label>
+</div>
+<button onclick="resetWeek()">Réinitialiser la semaine</button>
+<script>
+    function resetWeek() {
+      document.querySelectorAll('input[type="checkbox"]').forEach(box => box.checked = false);
+    }
+  </script>
+</body>
+</html>
+</main>
+<script>
+      function navigate(select) {
+        const file = select.value;
+        window.location.href = file;
+      }
+    </script>
+</body>
+</html>
