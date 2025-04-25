@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 
 <html lang="fr">
-<head>
+<head><link href="https://fonts.googleapis.com/css2?family=Caveat&amp;display=swap" rel="stylesheet"/>
 <meta charset="utf-8"/>
 <title>Hadinote - Suivi Animaux</title>
 <style>
@@ -48,7 +48,7 @@
     }
     h2 {
       font-size: 2rem;
-      color: #f48fb1;
+      color: #b0c4de;
       border-bottom: 1px solid #444;
       padding-bottom: 0.5rem;
       margin-top: 2rem;
@@ -95,7 +95,7 @@
 }
 .repas-card h4 {
   margin-top: 0;
-  color: #f48fb1;
+  color: #b0c4de;
 }
 .repas-card ul {
   padding-left: 1rem;
@@ -113,6 +113,12 @@
     .repas-card h4 {
       font-size: 2rem;
     }
+    
+    .repas-card h4 {
+      color: #d0d0d0;
+      font-family: 'Caveat', cursive;
+      font-size: 2rem;
+    }
     </style>
 <script>
     function toggleAnimalSection() {
@@ -124,7 +130,6 @@
       minette.style.display = select.value === "minette" ? "block" : "none";
     }
   </script>
-
 <script>
   function toggleIngrédients(element) {
     const ul = element.nextElementSibling;
@@ -163,9 +168,9 @@
 </nav>
 <main>
 <div class="animal-section" id="hades">
-<h2>Suivi de Hadès (chien)</h2>
+<h2>Suivi de Hadès</h2>
 <ul>
-<li>• Brossage régulier (2 à 3 fois/semaine)</li></ul>
+</ul>
 <h3>Repas maison recommandés :</h3>
 <div class="repas-grid">
 <div class="repas-card">
@@ -242,6 +247,55 @@
 </div>
 </div>
 </div>
+
+<div class="animal-section" id="brossage">
+<h2>Brossage</h2>
+<p style="font-size: 1.6rem; line-height: 1.6;">
+    🐾 <strong>Pourquoi brosser son chien ?</strong><br/><br/>
+    Le brossage régulier est essentiel pour :<br/>
+    • Éliminer les poils morts et prévenir les nœuds.<br/>
+    • Stimuler la circulation sanguine et la production de sébum, favorisant un pelage sain.<br/>
+    • Détecter rapidement parasites, blessures ou anomalies cutanées.<br/>
+    • Renforcer le lien entre toi et ton chien.<br/><br/>
+
+    🧰 <strong>Le matériel adapté</strong><br/><br/>
+    Choisir les bons outils est crucial :<br/>
+    • Brosse slicker : idéale pour les poils longs ou épais, elle pénètre le sous-poil sans agresser la peau.<br/>
+    • Peigne métallique : parfait pour démêler et retirer les poils morts.<br/>
+    • Gant de toilettage : convient aux chiens sensibles ou à poil court.<br/>
+    • Spray démêlant : facilite le brossage en réduisant les nœuds.<br/><br/>
+    Il est recommandé de tester différents outils pour trouver ceux que ton chien tolère le mieux.<br/><br/>
+
+    📅 <strong>Fréquence de brossage</strong><br/><br/>
+    La fréquence dépend du type de pelage :<br/>
+    • Poils courts : 1 à 2 fois par semaine.<br/>
+    • Poils mi-longs à longs : plusieurs fois par semaine, voire quotidiennement en période de mue.<br/>
+    • Chiens à sous-poil dense : brossage quotidien recommandé pendant la mue.<br/><br/>
+
+    🧭 <strong>Méthode de brossage</strong><br/><br/>
+    1. Préparation :<br/>
+    • Choisis un moment calme et un endroit confortable.<br/>
+    • Assure-toi que ton chien est détendu.<br/><br/>
+    2. Démêlage :<br/>
+    • Utilise un spray démêlant si nécessaire.<br/>
+    • Commence par les zones sujettes aux nœuds : oreilles, aisselles, ventre.<br/><br/>
+    3. Brossage :<br/>
+    • Brosse dans le sens du poil, en commençant par le cou, puis le dos, les flancs, les pattes et enfin la queue.<br/>
+    • Pour les poils longs, travaille par sections, en soulevant les poils pour atteindre le sous-poil.<br/><br/>
+    4. Zones sensibles :<br/>
+    • Sois particulièrement doux sur la tête, le ventre et les pattes.<br/>
+    • Utilise un gant de toilettage ou une brosse douce pour ces zones.<br/><br/>
+    5. Finalisation :<br/>
+    • Inspecte le pelage pour t’assurer de l’absence de nœuds ou de parasites.<br/>
+    • Récompense ton chien avec une friandise ou des caresses pour associer le brossage à une expérience positive.<br/><br/>
+
+    ⚠️ <strong>Conseils supplémentaires</strong><br/>
+    • Évite de brosser un pelage mouillé, cela pourrait resserrer les nœuds.<br/>
+    • Si ton chien n’est pas habitué au brossage, commence par de courtes sessions et augmente progressivement la durée.<br/>
+    • En cas de nœuds persistants, n’hésite pas à consulter un toiletteur professionnel.
+  </p>
+</div>
+
 </main>
 </body>
 </html>
