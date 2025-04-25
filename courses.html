@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Liste de Courses - Hadinote</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: #121212;
+      color: #f0f0f0;
+    }
+    header {
+      background-color: #1e1e1e;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-bottom: 2px solid #333;
+    }
+    header img {
+      height: 80px;
+      margin-right: 15px;
+    }
+    header h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin: 0;
+    }
+    nav {
+      background-color: #2a2a2a;
+      padding: 1rem;
+      text-align: center;
+    }
+    nav select {
+      font-size: 1rem;
+      padding: 0.6rem;
+      background-color: #333;
+      color: #f0f0f0;
+      border: none;
+      border-radius: 4px;
+    }
+    main {
+      padding: 2rem;
+      text-align: center;
+    }
+  
+
+    .category-box {
+      border: 1px solid #444;
+      background-color: #1e1e1e;
+      padding: 1rem;
+      border-radius: 8px;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    }
+
+
+#falling-flowers {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+}
+.petal {
+  position: absolute;
+  width: 30px;
+  animation: fall 10s linear infinite;
+  opacity: 0.5;
+}
+.petal:nth-child(2) { animation-delay: 2s; }
+.petal:nth-child(3) { animation-delay: 4s; }
+.petal:nth-child(4) { animation-delay: 6s; }
+.petal:nth-child(5) { animation-delay: 8s; }
+
+@keyframes fall {
+  0% { transform: translateY(-100px) rotate(0deg); }
+  100% { transform: translateY(100vh) rotate(360deg); }
+}
+
+
+.petal {
+  position: absolute;
+  width: 30px;
+  animation-name: fall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  opacity: 0.4;
+}
+@keyframes fall {
+  0% { transform: translateY(-100px) rotate(0deg); }
+  100% { transform: translateY(100vh) rotate(360deg); }
+}
+</style>
+</head>
+<body>
+<div id="falling-flowers">
+<img class="petal" src="cherry_blossom.png" style="left: 10%;"/>
+<img class="petal" src="cherry_blossom.png" style="left: 25%;"/>
+<img class="petal" src="cherry_blossom.png" style="left: 40%;"/>
+<img class="petal" src="cherry_blossom.png" style="left: 60%;"/>
+<img class="petal" src="cherry_blossom.png" style="left: 75%;"/>
+<img class="petal" src="cherry_blossom.png" style="left: 54%; animation-delay: 1.2s; animation-duration: 13.2s; transform: rotate(255deg);"/><img class="petal" src="cherry_blossom.png" style="left: 56%; animation-delay: 7.1s; animation-duration: 9.8s; transform: rotate(106deg);"/><img class="petal" src="cherry_blossom.png" style="left: 85%; animation-delay: 1.0s; animation-duration: 8.4s; transform: rotate(112deg);"/><img class="petal" src="cherry_blossom.png" style="left: 42%; animation-delay: 0.7s; animation-duration: 13.2s; transform: rotate(280deg);"/><img class="petal" src="cherry_blossom.png" style="left: 57%; animation-delay: 0.6s; animation-duration: 10.5s; transform: rotate(275deg);"/><img class="petal" src="cherry_blossom.png" style="left: 86%; animation-delay: 9.1s; animation-duration: 12.9s; transform: rotate(101deg);"/><img class="petal" src="cherry_blossom.png" style="left: 39%; animation-delay: 3.8s; animation-duration: 9.9s; transform: rotate(299deg);"/><img class="petal" src="cherry_blossom.png" style="left: 73%; animation-delay: 9.8s; animation-duration: 9.1s; transform: rotate(251deg);"/><img class="petal" src="cherry_blossom.png" style="left: 95%; animation-delay: 8.9s; animation-duration: 10.2s; transform: rotate(190deg);"/><img class="petal" src="cherry_blossom.png" style="left: 76%; animation-delay: 5.1s; animation-duration: 8.0s; transform: rotate(155deg);"/></div>
+<header>
+<img alt="Logo Hadinote" src="logo.png"/>
+<h1>Hadinote</h1>
+</header>
+<nav>
+
+<select onchange="location = this.value;">
+    <option selected disabled>Navigation</option>
+    <option value="index.html">Accueil</option>
+    <option value="courses.html">Liste de Courses</option>
+    <option value="taches.html">Tâches Ménagères</option>
+    <option value="calendrier.html">Calendrier</option>
+    <option value="revenus.html">Revenus Mensuels</option>
+    <option value="menu.html">Repas / Prise de poids</option>
+    <option value="imc.html">Suivi IMC</option>
+    <option value="rappels.html">Rappels</option>
+    <option value="parametres.html">Paramètres</option>
+    <option value="objectifs.html">Objectif Personnel</option>
+</select>
+
+</nav>
+<main>
+<h2>Liste de Courses Complète</h2>
+<ul id="course-list" style="text-align: left; max-width: 600px; margin: auto;">
+<div class="category-box">
+<h3 style="color: #ffb347;">Produits de base</h3>
+<li style="display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid #333;"><label style="flex-grow: 1; display: flex; align-items: center;"><input style="margin-right: 10px;" type="checkbox"/> Riz - 2 kg </label><input placeholder="€" style="width: 70px; padding: 4px; background-color: #2a2a2a; color: #f0f0f0; border: 1px solid #444; border-radius: 4px;" type="number"/></li>
+<li style="display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid #333;"><label style="flex-grow: 1; display: flex; align-items: center;"><input style="margin-right: 10px;" type="checkbox"/> Pâtes - 2 kg </label><input placeholder="€" style="width: 70px; padding: 4px; background-color: #2a2a2a; color: #f0f0f0; border: 1px solid #444; border-radius: 4px;" type="number"/></li>
+<li style="display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid #333;"><label style="flex-grow: 1; display: flex; align-items: center;"><input style="margin-right: 10px;" type="checkbox"/> Semoule - 1 kg </label><input placeholder="€" style="width: 70px; padding: 4px; background-color: #2a2a2a; color: #f0f0f0; border: 1px solid #444; border-radius: 4px;" type="number"/></li>
+<li style="display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid #333;"><label style="flex-grow: 1; display: flex; align-items: center;"><input style="margin-right: 10px;" type="checkbox"/> Lentilles - 1 kg </label><input placeholder="€" style="width: 70px; padding: 4px; background-color: #2a2a2a; color: #f0f0f0; border: 1px solid #444; border-radius: 4px;" type="number"/></li>
+<li style="display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid #333;"><label style="flex-grow: 1; display: flex; align-items: center;"><input style="margin-right: 10px;" type="checkbox"/> Haricots rouges - 1 boîte </label><input placeholder="€" style="width: 70px; padding: 4px; background-color: #2a2a2a; color: #f0f0f0; border: 1px solid #444; border-radius: 4px;" type="number"/></li>
+<li style="display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid #333;"><label style="flex-grow: 1; display: flex; align-items: center;"><input style="margin-right: 10px;" type="checkbox"/> Pois chiches - 1 boîte </label><input placeholder="€" style="width: 70px; padding: 4px; background-color: #2a2a2a; color: #f0f0f0; border: 1px solid #444; border-radius: 4px;" type="number"/></li>
+<li style="display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid #333;"><label style="flex-grow: 1; display: flex; align-items: center;"><input style="margin-right: 10px;" type="checkbox"/> Farine - 1 kg </label><input placeholder="€" style="width: 70px; padding: 4px; background-color: #2a2a2a; color: #f0f0f0; border: 1px solid #444; border-radius: 4px;" type="number"/></li>
+<li style="display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid #333;"><label style="flex-grow: 1; display: flex; align-items: center;"><input style="margin-right: 10px;" type="checkbox"/> Pain de mie - 2 paquets </label><input placeholder="€" style="width: 70px; padding: 4px; background-color: #2a2a2a; color: #f0f0f0; border: 1px solid #444; border-radius: 4px;" type="number"/></li>
+</div>
+<div class="category-box">
+<h3 style="color: #ffb347;">Protéines</h3>
+<li style="display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid #333;"><label style="flex-grow: 1; display: flex; align-items: center;"><input style="margin-right: 10px;" type="checkbox"/> Blancs de poulet - 1,5 kg </label><input placeholder="€" style="width: 70px; padding: 4px; background-color: #2a2a2a; color: #f0f0f0; border: 1px solid #444; border-radius: 4px;" type="number"/></li>
+<li style="display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid #333;"><label style="flex-grow: 1; display: flex; align-items: center;"><input style="margin-right: 10px;" type="checkbox"/> Viande hachée - 1 kg </label><input placeholder="€" style="width: 70px; padding: 4px; background-color: #2a2a2a; color: #f0f0f0; border: 1px solid #444; border-radius: 4px;" type="number"/></li>
+<li style="display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid #333;"><label style="flex-grow: 1; display: flex; align-items: center;"><input style="margin-right: 10px;" type="checkbox"/> Thon en boîte - 4 boîtes </label><input placeholder="€" style="width: 70px; padding: 4px; background-color: #2a2a2a; color: #f0f0f0; border: 1px solid #444; border-radius: 4px;" type="number"/></li>
+<li style="display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid #333;"><label style="flex-grow: 1; display: flex; align-items: center;"><input style="margin-right: 10px;" type="checkbox"/> Œufs - 12 </label><input placeholder="€" style="width: 70px; padding: 4px; background-color: #2a2a2a; color: #f0f0f0; border: 1px solid #444; border-radius: 4px;" type="number"/></li>
+<li style="display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid #333;"><label style="flex-grow: 1; display: flex; align-items: center;"><input style="margin-right: 10px;" type="checkbox"/> Fromage râpé - 300 g </label><input placeholder="€" style="width: 70px; padding: 4px; background-color: #2a2a2a; color: #f0f0f0; border: 1px solid #444; border-radius: 4px;" type="number"/></li>
+<li style="display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid #333;"><label style="flex-grow: 1; display: flex; align-items: center;"><input style="margin-right: 10px;" type="checkbox"/> Yaourts nature - 8 pots </label><input placeholder="€" style="width: 70px; padding: 4px; background-color: #2a2a2a; color: #f0f0f0; border: 1px solid #444; border-radius: 4px;" type="number"/></li>
+<li style="display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid #333;"><label style="flex-grow: 1; display: flex; align-items: center;"><input style="margin-right: 10px;" type="checkbox"/> Lait - 4 x 1L </label><input placeholder="€" style="width: 70px; padding: 4px; background-color: #2a2a2a; color: #f0f0f0; border: 1px solid #444; border-radius: 4px;" type="number"/></li>
+</div>
+<div class="category-box">
+<h3 style="color: #ffb347;">Fruits et légumes</h3>
+<li style="display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid #333;"><label style="flex-grow: 1; display: flex; align-items: center;"><input style="margin-right: 10px;" type="checkbox"/> Pommes - 1,5 kg </label><input placeholder="€" style="width: 70px; padding: 4px; background-color: #2a2a2a; color: #f0f0f0; border: 1px solid #444; border-radius: 4px;" type="number"/></li>
+<li style="display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid #333;"><label style="flex-grow: 1; display: flex; align-items: center;"><input style="margin-right: 10px;" type="checkbox"/> Bananes - 1 kg </label><input placeholder="€" style="width: 70px; padding: 4px; background-color: #2a2a2a; color: #f0f0f0; border: 1px solid #444; border-radius: 4px;" type="number"/></li>
+<li style="display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid #333;"><label style="flex-grow: 1; display: flex; align-items: center;"><input style="margin-right: 10px;" type="checkbox"/> Carottes - 1 kg </label><input placeholder="€" style="width: 70px; padding: 4px; background-color: #2a2a2a; color: #f0f0f0; border: 1px solid #444; border-radius: 4px;" type="number"/></li>
+<li style="display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid #333;"><label style="flex-grow: 1; display: flex; align-items: center;"><input style="margin-right: 10px;" type="checkbox"/> Pommes de terre - 2 kg </label><input placeholder="€" style="width: 70px; padding: 4px; background-color: #2a2a2a; color: #f0f0f0; border: 1px solid #444; border-radius: 4px;" type="number"/></li>
+<li style="display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid #333;"><label style="flex-grow: 1; display: flex; align-items: center;"><input style="margin-right: 10px;" type="checkbox"/> Courgettes - 1 kg </label><input placeholder="€" style="width: 70px; padding: 4px; background-color: #2a2a2a; color: #f0f0f0; border: 1px solid #444; border-radius: 4px;" type="number"/></li>
+<li style="display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid #333;"><label style="flex-grow: 1; display: flex; align-items: center;"><input style="margin-right: 10px;" type="checkbox"/> Oignons - 1 kg </label><input placeholder="€" style="width: 70px; padding: 4px; background-color: #2a2a2a; color: #f0f0f0; border: 1px solid #444; border-radius: 4px;" type="number"/></li>
+<li style="display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid #333;"><label style="flex-grow: 1; display: flex; align-items: center;"><input style="margin-right: 10px;" type="checkbox"/> Ail - 1 tête </label><input placeholder="€" style="width: 70px; padding: 4px; background-color: #2a2a2a; color: #f0f0f0; border: 1px solid #444; border-radius: 4px;" type="number"/></li>
+<li style="display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid #333;"><label style="flex-grow: 1; display: flex; align-items: center;"><input style="margin-right: 10px;" type="checkbox"/> Salade verte - 2 pièces </label><input placeholder="€" style="width: 70px; padding: 4px; background-color: #2a2a2a; color: #f0f0f0; border: 1px solid #444; border-radius: 4px;" type="number"/></li>
+<li style="display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid #333;"><label style="flex-grow: 1; display: flex; align-items: center;"><input style="margin-right: 10px;" type="checkbox"/> Tomates ou sauce - 1 kg ou 1 boîte </label><input placeholder="€" style="width: 70px; padding: 4px; background-color: #2a2a2a; color: #f0f0f0; border: 1px solid #444; border-radius: 4px;" type="number"/></li>
+</div>
+<div class="category-box">
+<h3 style="color: #ffb347;">Hygiène &amp; Entretien</h3>
+<li style="display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid #333;"><label style="flex-grow: 1; display: flex; align-items: center;"><input style="margin-right: 10px;" type="checkbox"/> Papier toilette - 6 rouleaux </label><input placeholder="€" style="width: 70px; padding: 4px; background-color: #2a2a2a; color: #f0f0f0; border: 1px solid #444; border-radius: 4px;" type="number"/></li>
+<li style="display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid #333;"><label style="flex-grow: 1; display: flex; align-items: center;"><input style="margin-right: 10px;" type="checkbox"/> Gel douche - 1 bouteille </label><input placeholder="€" style="width: 70px; padding: 4px; background-color: #2a2a2a; color: #f0f0f0; border: 1px solid #444; border-radius: 4px;" type="number"/></li>
+<li style="display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid #333;"><label style="flex-grow: 1; display: flex; align-items: center;"><input style="margin-right: 10px;" type="checkbox"/> Dentifrice - 1 tube </label><input placeholder="€" style="width: 70px; padding: 4px; background-color: #2a2a2a; color: #f0f0f0; border: 1px solid #444; border-radius: 4px;" type="number"/></li>
+<li style="display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid #333;"><label style="flex-grow: 1; display: flex; align-items: center;"><input style="margin-right: 10px;" type="checkbox"/> Liquide vaisselle - 1 bouteille </label><input placeholder="€" style="width: 70px; padding: 4px; background-color: #2a2a2a; color: #f0f0f0; border: 1px solid #444; border-radius: 4px;" type="number"/></li>
+<li style="display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid #333;"><label style="flex-grow: 1; display: flex; align-items: center;"><input style="margin-right: 10px;" type="checkbox"/> Lessive - 1 petit bidon </label><input placeholder="€" style="width: 70px; padding: 4px; background-color: #2a2a2a; color: #f0f0f0; border: 1px solid #444; border-radius: 4px;" type="number"/></li>
+</div>
+<div class="category-box">
+<h3 style="color: #ffb347;">Divers</h3>
+<li style="display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid #333;"><label style="flex-grow: 1; display: flex; align-items: center;"><input style="margin-right: 10px;" type="checkbox"/> Café ou thé - 1 paquet </label><input placeholder="€" style="width: 70px; padding: 4px; background-color: #2a2a2a; color: #f0f0f0; border: 1px solid #444; border-radius: 4px;" type="number"/></li>
+<li style="display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid #333;"><label style="flex-grow: 1; display: flex; align-items: center;"><input style="margin-right: 10px;" type="checkbox"/> Sucre - 500 g </label><input placeholder="€" style="width: 70px; padding: 4px; background-color: #2a2a2a; color: #f0f0f0; border: 1px solid #444; border-radius: 4px;" type="number"/></li>
+<li style="display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid #333;"><label style="flex-grow: 1; display: flex; align-items: center;"><input style="margin-right: 10px;" type="checkbox"/> Chocolat à tartiner - 1 pot </label><input placeholder="€" style="width: 70px; padding: 4px; background-color: #2a2a2a; color: #f0f0f0; border: 1px solid #444; border-radius: 4px;" type="number"/></li>
+<li style="display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid #333;"><label style="flex-grow: 1; display: flex; align-items: center;"><input style="margin-right: 10px;" type="checkbox"/> Biscuits secs - 1 paquet </label><input placeholder="€" style="width: 70px; padding: 4px; background-color: #2a2a2a; color: #f0f0f0; border: 1px solid #444; border-radius: 4px;" type="number"/></li>
+<li style="display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid #333;"><label style="flex-grow: 1; display: flex; align-items: center;"><input style="margin-right: 10px;" type="checkbox"/> Huiles - 1 bouteille </label><input placeholder="€" style="width: 70px; padding: 4px; background-color: #2a2a2a; color: #f0f0f0; border: 1px solid #444; border-radius: 4px;" type="number"/></li>
+<li style="display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid #333;"><label style="flex-grow: 1; display: flex; align-items: center;"><input style="margin-right: 10px;" type="checkbox"/> Sel / Poivre / Épices - selon besoin </label><input placeholder="€" style="width: 70px; padding: 4px; background-color: #2a2a2a; color: #f0f0f0; border: 1px solid #444; border-radius: 4px;" type="number"/></li>
+</div>
+</ul>
+<button onclick="resetList()">Réinitialiser la liste</button>
+</main>
+<script>
+    function navigate(select) {
+      window.location.href = select.value;
+    }
+  </script>
+</body>
+</html>
