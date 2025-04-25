@@ -1,0 +1,247 @@
+
+<!DOCTYPE html>
+
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<title>Hadinote - Suivi Animaux</title>
+<style>
+    body {
+      background-color: #121212;
+      color: #f0f0f0;
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #1e1e1e;
+      padding: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    header img {
+      height: 160px;
+      margin-right: 1rem;
+    }
+    header h1 {
+      font-size: 5rem;
+      margin: 0;
+    }
+    nav {
+      background-color: #2a2a2a;
+      padding: 1rem;
+      text-align: center;
+    }
+    nav select, #animalSelect {
+      font-size: 2rem;
+      padding: 0.6rem;
+      background-color: #1f1f1f;
+      color: #fff;
+      border: 1px solid #444;
+      margin: 0.5rem;
+    }
+    main {
+      padding: 2rem;
+      max-width: 1000px;
+      margin: auto;
+    }
+    h2 {
+      font-size: 2rem;
+      color: #f48fb1;
+      border-bottom: 1px solid #444;
+      padding-bottom: 0.5rem;
+      margin-top: 2rem;
+    }
+    .animal-section {
+      background: #1f1f1f;
+      border: 1px solid #333;
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin-top: 1.5rem;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
+    }
+    ul {
+      list-style: none;
+      padding-left: 1rem;
+    }
+    li {
+      padding: 0.5rem 0;
+      font-size: 1.2rem;
+    }
+  
+.repas-box {
+  background-color: #2a2a2a;
+  border: 1px solid #3a3a3a;
+  border-radius: 8px;
+  padding: 1rem;
+  margin: 1rem 0;
+}
+
+
+.repas-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.repas-card {
+  background-color: #2a2a2a;
+  border: 1px solid #3a3a3a;
+  border-radius: 10px;
+  padding: 1rem;
+  width: calc(50% - 1rem);
+  box-shadow: 0 0 10px rgba(255,255,255,0.05);
+}
+.repas-card h4 {
+  margin-top: 0;
+  color: #f48fb1;
+}
+.repas-card ul {
+  padding-left: 1rem;
+}
+
+    li {
+      font-size: 1.8rem;
+    }
+    h2 {
+      font-size: 3rem;
+    }
+    h3 {
+      font-size: 2.2rem;
+    }
+    .repas-card h4 {
+      font-size: 2rem;
+    }
+    </style>
+<script>
+    function toggleAnimalSection() {
+      var select = document.getElementById("animalSelect");
+      var hades = document.getElementById("hades");
+      var minette = document.getElementById("minette");
+
+      hades.style.display = select.value === "hades" ? "block" : "none";
+      minette.style.display = select.value === "minette" ? "block" : "none";
+    }
+  </script>
+
+<script>
+  function toggleIngrédients(element) {
+    const ul = element.nextElementSibling;
+    if (ul.style.display === "none") {
+      ul.style.display = "block";
+    } else {
+      ul.style.display = "none";
+    }
+  }
+</script>
+</head>
+<body>
+<header>
+<img alt="Logo Hadinote" src="logo.png"/>
+<h1>Hadinote</h1>
+</header>
+<nav>
+<select onchange="location = this.value;">
+<option disabled="" selected="">Navigation</option>
+<option value="/index.html">Accueil</option>
+<option value="/courses.html">Liste de Courses</option>
+<option value="/taches.html">Tâches Ménagères</option>
+<option value="/calendrier.html">Calendrier</option>
+<option value="/revenus.html">Revenus Mensuels</option>
+<option value="/menu.html">Repas / Prise de poids</option>
+<option value="/imc.html">Suivi IMC</option>
+<option value="/animaux.html">Animaux</option>
+<option value="/parametres.html">Paramètres</option>
+<option value="/objectifs.html">Objectif Personnel</option>
+</select>
+<br/>
+<select id="animalSelect" onchange="toggleAnimalSection()">
+<option value="hades">Hadès (chien)</option>
+<option value="minette">Minette (chat)</option>
+</select>
+</nav>
+<main>
+<div class="animal-section" id="hades">
+<h2>Suivi de Hadès (chien)</h2>
+<ul>
+<li>• Brossage régulier (2 à 3 fois/semaine)</li></ul>
+<h3>Repas maison recommandés :</h3>
+<div class="repas-grid">
+<div class="repas-card">
+<h4 onclick="toggleIngrédients(this)" style="cursor: pointer; text-decoration: underline;">Poulet – Riz – Carottes</h4>
+<ul style="display: none;">
+<li>• 200g de blanc de poulet cuit sans sel</li>
+<li>• 100g de riz blanc bien cuit</li>
+<li>• 1 petite carotte râpée ou cuite</li>
+<li>• 1 càc d’huile de colza</li>
+</ul>
+</div>
+<div class="repas-card">
+<h4 onclick="toggleIngrédients(this)" style="cursor: pointer; text-decoration: underline;">Bœuf – Courgettes – Pâtes</h4>
+<ul style="display: none;">
+<li>• 200g de bœuf haché 5% bien cuit</li>
+<li>• 80g de pâtes sans sel</li>
+<li>• 1/2 courgette vapeur</li>
+<li>• 1 càc d’huile de poisson</li>
+</ul>
+</div>
+<div class="repas-card">
+<h4 onclick="toggleIngrédients(this)" style="cursor: pointer; text-decoration: underline;">Dinde – Patate douce – Haricots verts</h4>
+<ul style="display: none;">
+<li>• 200g de filet de dinde</li>
+<li>• 100g de patate douce bien cuite</li>
+<li>• 1 poignée de haricots verts vapeur</li>
+<li>• 1/2 càc de levure de bière (optionnel)</li>
+</ul>
+</div>
+<div class="repas-card">
+<h4 onclick="toggleIngrédients(this)" style="cursor: pointer; text-decoration: underline;">Sardines – Riz – Épinards</h4>
+<ul style="display: none;">
+<li>• 2 petites sardines en boîte (sans sel)</li>
+<li>• 100g de riz</li>
+<li>• Épinards cuits</li>
+<li>• Quelques graines de chia</li>
+</ul>
+</div>
+<div class="repas-card">
+<h4 onclick="toggleIngrédients(this)" style="cursor: pointer; text-decoration: underline;">Œuf – Fromage blanc – Courgette – Riz</h4>
+<ul style="display: none;">
+<li>• 1 œuf dur</li>
+<li>• 1 càs de fromage blanc 0%</li>
+<li>• 50g de riz</li>
+<li>• Légumes cuits</li>
+</ul>
+</div>
+<div class="repas-card">
+<h4 onclick="toggleIngrédients(this)" style="cursor: pointer; text-decoration: underline;">Agneau – Courge – Brocoli</h4>
+<ul style="display: none;">
+<li>• 200g d’agneau cuit sans gras</li>
+<li>• 100g de courge bien cuite</li>
+<li>• 1/2 brocoli vapeur</li>
+<li>• 1 càc d’huile de lin</li>
+</ul>
+</div>
+<div class="repas-card">
+<h4 onclick="toggleIngrédients(this)" style="cursor: pointer; text-decoration: underline;">Poisson blanc – Patate douce – Carottes</h4>
+<ul style="display: none;">
+<li>• 200g de colin ou cabillaud cuit sans sel</li>
+<li>• 100g de patate douce</li>
+<li>• Carottes râpées ou vapeur</li>
+<li>• 1 càc d’huile de tournesol</li>
+</ul>
+</div>
+<div class="repas-card">
+<h4 onclick="toggleIngrédients(this)" style="cursor: pointer; text-decoration: underline;">Veau – Riz complet – Haricots verts</h4>
+<ul style="display: none;">
+<li>• 200g d’escalope de veau</li>
+<li>• 100g de riz complet</li>
+<li>• Haricots verts vapeur</li>
+<li>• 1 càc d’huile de saumon</li>
+</ul>
+</div>
+</div>
+</div>
+</main>
+</body>
+</html>
